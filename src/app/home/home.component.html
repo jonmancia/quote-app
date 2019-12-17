@@ -1,0 +1,29 @@
+<div class="jumbotron vh-100 text-center">
+  <h1 class="display-4 pt-5">Get your quote today!</h1>
+  <p class="lead">
+    Armando Automotive Transport offers you a quick and easy way to get a quote.
+  </p>
+  <hr class="my-4" />
+  <h3>
+    3 Easy Steps:
+  </h3>
+  <ul>
+    <div>
+      <li>Provide name</li>
+      <li>Provide email address</li>
+      <li>Provide phone number</li>
+    </div>
+  </ul>
+  <h6 class="text-monospace">Don't worry we won't spam you!</h6>
+  <br class="my-4" />
+  <a
+    class="btn btn-primary btn-lg text-white"
+    (click)="onQuoteClick()"
+    role="button"
+    >Get quote</a
+  >
+</div>
+<app-quote-request-modal
+  *ngIf="quoteButtonClicked"
+  (quoteModalClosed)="setModalClosed($event)"
+></app-quote-request-modal>

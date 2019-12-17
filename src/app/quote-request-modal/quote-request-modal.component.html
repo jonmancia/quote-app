@@ -1,0 +1,149 @@
+<div class="backdrop" (click)="closeModal()"></div>
+<form
+  class="container border rounded position-absolute fixed-top align-middle mt-20 bg-white contrained-sm"
+  (ngSubmit)="onQuoteRequestSubmit(quoteForm)"
+  #quoteForm="ngForm"
+  *ngIf="!quoteRequestComplete"
+>
+  <h4 class="pt-4">Vehicle Information</h4>
+  <div class="d-lg-inline-flex w-100 d-sm-block pt-4">
+    <div class="form-group px-4 d-block">
+      <label for="vmake">Vehicle Make</label>
+      <select
+        (change)="onMakeChange($event.target.value)"
+        name="vmake"
+        class="custom-select"
+        [ngModel]="defaultMake"
+      >
+        <option *ngFor="let make of vehicleMakes" [value]="make">
+          {{ make }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group px-4 d-block">
+      <label for="vmodel">Vehicle Model</label>
+      <select name="vmodel" ngModel class="custom-select">
+        <option *ngFor="let model of vehicleModels" [value]="model">
+          {{ model }}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="d-lg-inline-flex w-100">
+    <div class="px-4 w-25 d-md-block form-group">
+      <label for="vtype">Vehicle Type</label>
+      <select name="vtype" ngModel class="custom-select">
+        <option *ngFor="let type of vehicleTypes" [value]="type">
+          {{ type }}
+        </option>
+      </select>
+    </div>
+    <div class="form-group px-4 w-25 d-md-block">
+      <label for="vyear">Vehicle Year</label>
+      <input
+        type="text"
+        name="vyear"
+        id="vyear"
+        ngModel
+        class="form-control"
+        required
+        pattern="\d{4}"
+        maxlength="4"
+      />
+    </div>
+  </div>
+  <div class="d-inline-flex">
+    <div class="form-group px-4">
+      <label for="pcity">Pickup City</label>
+      <input
+        type="text"
+        name="pcity"
+        id="pcity"
+        ngModel
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="form-group px-4">
+      <label for="pstate">Pickup State</label>
+      <select name="pstate" id="pstate" class="custom-select" ngModel>
+        <option *ngFor="let state of states" [value]="state">{{
+          state
+        }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="d-inline-flex">
+    <div class="form-group px-4">
+      <label for="pcity">Delivery City</label>
+      <input
+        type="text"
+        name="dcity"
+        id="dcity"
+        ngModel
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="form-group px-4">
+      <label for="pstate">Delivery State</label>
+      <select name="dstate" id="dstate" class="custom-select" ngModel>
+        <option *ngFor="let state of states" [value]="state">
+          {{ state }}
+        </option>
+      </select>
+    </div>
+  </div>
+
+  <h4>Your Information</h4>
+  <div class="d-inline-flex">
+    <div class="form-group px-4">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        name="name"
+        id="name"
+        ngModel
+        class="form-control"
+        required
+      />
+    </div>
+    <div class="form-group px-4">
+      <label for="phone">Phone Number</label>
+      <input
+        type="text"
+        name="phone"
+        id="phone"
+        ngModel
+        class="form-control"
+        required
+      />
+    </div>
+  </div>
+  <div class="form-group w-100 px-4">
+    <label for="email">Email</label>
+    <input
+      type="text"
+      name="email"
+      id="email"
+      ngModel
+      class="form-control w-50"
+      required
+    />
+    <div class="button-group d-flex justify-content-end pt-pr-4">
+      <button class="btn btn-danger mr-2" (click)="closeModal()">Close</button>
+      <button
+        class="btn btn-primary"
+        [disabled]="!quoteForm.valid"
+        type="submit"
+      >
+        Get quote!
+      </button>
+    </div>
+  </div>
+</form>
+<app-quote-request-confirmation
+  [loading]="isCalcLoading"
+  [quoteTotal]="quoteTotal"
+  *ngIf="quoteRequestComplete"
+></app-quote-request-confirmation>

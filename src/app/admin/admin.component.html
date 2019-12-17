@@ -1,0 +1,17 @@
+<div class="card" *ngFor="let quote of quotes">
+  <div class="card-header">
+    {{ quote.name }}, {{ quote.phone }}, {{ quote.email }}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">
+      {{ quote.pickup_city }}, {{ quote.pickup_state }} to
+      {{ quote.delivery_city }}, {{ quote.delivery_state }}
+    </h5>
+    <p class="card-text">
+      Make: {{ quote.make }} <br />
+      Model: {{ quote.model }} <br />
+      Year: {{ quote.year }} <br />
+      Type: {{ quote.type }} <br />
+    </p>
+  </div>
+</div>

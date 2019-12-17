@@ -1,0 +1,47 @@
+.mt-20 {
+  margin-top: 10rem;
+}
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 721px !important;
+  }
+}
+
+@media (max-width: 570px) {
+  .mt-20 {
+    margin-top: 5rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .w-25 {
+    width: 45% !important;
+  }
+}
+
+@media (max-width: 425px) {
+  div.button-group {
+    margin-top: 2rem;
+  }
+}
+
+.ng-invalid.ng-touched {
+  border: solid 2px red;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+}
+
+.ng-valid.ng-touched {
+  border: 1px solid #ced4da;
+}

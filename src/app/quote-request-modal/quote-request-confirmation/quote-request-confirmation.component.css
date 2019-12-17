@@ -1,0 +1,7 @@
+@import '../quote-request-modal.component.css';
+
+@media (max-width: 250px) {
+  .container .h-50 {
+    height: 80vh;
+  }
+}
